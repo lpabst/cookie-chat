@@ -18,8 +18,14 @@ angular.module('chatroom').service('messageService', function($http){
   //Also, remember that $http returns a promise. So return the whole $http call (return $http(...)), 
   so you can then use .then in your controller.
 */
-this.postMessage = function(){
-
+this.postMessage = function(message){
+  return $http({
+    method: 'POST',
+    url: 'https://practiceapi.devmounta.in/api/chats',
+    data: {
+      message: message
+    }
+  });
 }
 
 
