@@ -28,6 +28,26 @@ this.postMessage = function(message){
   });
 }
 
+
+this.time = function(str){
+    var arr = str.split('');
+    var date = [];
+    for (var i = 5; i < 10; i++){
+      date.push(arr[i]);
+    }
+    date.push('-');
+    for(var i = 0; i < 4; i ++){
+      date.push(arr[i]);
+    }
+    date.push(', ');
+    for (var i = 11; i < 16; i ++){
+      date.push(arr[i]);
+    }
+
+    return date.join('');
+}
+
+
 this.deleteMessage = function(){
   return $http.delete('https://practiceapi.devmounta.in/api/chats');
 }

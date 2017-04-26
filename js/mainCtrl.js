@@ -1,23 +1,5 @@
 angular.module('chatroom').controller('mainCtrl', function($scope, messageService){
 
-  $scope.time = function(str){
-    var arr = str.split('');
-    var date = [];
-    for (var i = 5; i < 10; i++){
-      date.push(arr[i]);
-    }
-    date.push('-');
-    for(var i = 0; i < 4; i ++){
-      date.push(arr[i]);
-    }
-    date.push(', ');
-    for (var i = 11; i < 16; i ++){
-      date.push(arr[i]);
-    }
-
-    return date.join('');
-  }
-
 
   //The getMessages function will call the getMessages method on the messageService object.
   //You'll then save the result of that request to your controller's $scope as messages ($scope.messages)
@@ -25,9 +7,11 @@ angular.module('chatroom').controller('mainCtrl', function($scope, messageServic
     var promise = messageService.getMessages();
     promise.then(function(response){
       $scope.messages = response.data;
+     
     });
   }
   
+
 
   //The postMessage function will take whatever the user typed in (hint: look at the html and see 
   //what ng-model correlates to on the input box),
@@ -51,6 +35,12 @@ angular.module('chatroom').controller('mainCtrl', function($scope, messageServic
 
   }, 1500)
 
+//Function to display the time properly
+  $scope.time = function(str){
+    return messageService.time(str);
+  }
+
+//function to delete all of the messages
   $scope.deleteMessage = function(){
     messageService.deleteMessage().then(function(response){
       $scope.messages = response.data;
