@@ -28,5 +28,9 @@ this.postMessage = function(message){
   });
 }
 
+this.deleteMessage = function(){
+  return $http.delete('https://practiceapi.devmounta.in/api/chats');
+}
+
 
 });

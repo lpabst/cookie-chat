@@ -15,7 +15,6 @@ angular.module('chatroom').controller('mainCtrl', function($scope, messageServic
       date.push(arr[i]);
     }
 
-
     return date.join('');
   }
 
@@ -51,5 +50,11 @@ angular.module('chatroom').controller('mainCtrl', function($scope, messageServic
     $scope.getMessages();
 
   }, 1500)
+
+  $scope.deleteMessage = function(){
+    messageService.deleteMessage().then(function(response){
+      $scope.messages = response.data;
+    })
+  }
 
 })
